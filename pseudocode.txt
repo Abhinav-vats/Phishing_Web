@@ -1,0 +1,72 @@
+1-create class featureextraction
+2- declare function having_ip with url as parameter:
+		 IF{If The Domain Part has an IP Address → Phishing Otherwise→ Legitimate }
+		 
+3- declare function len_url with url as parameter:
+		IF{URL length<54 → feature=Legitimate  else if URL length54 and 75 → feature=Suspicious  otherwise→ feature=Phishing }
+
+4- declare function having_at_symbol with url as parameter:
+		 IF {Url Having @ Symbol→ Phishing Otherwise→ Legitimate }
+
+5- declare function  prefix_suffix_separation  with url as parameter:
+		IF {Domain Name Part Includes (-) Symbol → Phishing Otherwise → Legitimate }
+
+6- declare function redirection_symbol  with url as parameter:
+		IF {ThePosition of the Last Occurrence of "//" in the URL > 7→ Phishing Otherwise→ Legitimate }
+
+7- declare function sub_domains  with url as parameter:
+		IF {Dots In Domain Part=1 → Legitimate Dots In Domain Part=2 → Suspicious Otherwise→ Phishing }
+
+8- declare function  age_domain with url as parameter:
+		 IF {Age Of Domain≥6 months → Legitimate Otherwise → Phishing }
+
+9- declare function  dns_record with url as parameter:
+		IF{no DNS Record For The Domain → Phishing Otherwise→ Legitimate }
+
+10- declare function domain_registration_length  with url as parameter:
+		IF{Domains Expires on 1 years → Phishing Otherwise→ Legitimate }
+
+11- declare function http_tokens  with url as parameter:
+		IF{Using HTTP Token in Domain Part of The URL→ Phishing Otherwise→ Legitimate }
+ 
+12- declare function statistical_report  with url as parameter:
+		 IF{Host Belongs to Top Phishing IPs or Top Phishing Domains → Phishing Otherwise → Legitimate }
+
+13- declare function  tiny_url with url as parameter:
+		IF{TinyURL → Phishing Otherwise→ Legitimate }
+
+14- declare function  web_traffic with url as parameter:
+		IF{Website Rank<100,000 → Legitimate Website Rank>100,000 →Suspicious Otherwise → Phishing}
+		
+15- declare function getAttributess with parameter url
+		create object of featureextraction class
+		call all the methods of the class passing url as argument and storing the return value in variable
+		
+		create a array with key values and store these variables value into the assigned key values
+		convert array into pandas dataframe
+		return the converted dataframe
+
+16- store dataset "out.csv" in a variable in pandas dataframe format
+
+17- convert this dataframe in a particular structure, drop unneccessary attributes.
+
+18- extract the label attribute of the url
+
+19- split dataset into train_value and train_result as well as test_value and test_result
+
+20- call RandomForestClassifier function to model
+
+21- fit the train_value  and train_result into it
+
+22- store the imported url which is to be tested as phishing or not in variable
+
+23- predict the result and store it to variable
+
+24- for i in predicted_result:
+		if i equals 1:
+			print("PHISHING")
+		else:
+			print("SAFE WEBSITE")
+		
+		
+		

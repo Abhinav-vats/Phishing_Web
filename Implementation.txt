@@ -1,0 +1,30 @@
+Create a folder which will store all the files of our extension.
+• Create a JSON file named manifest.json.
+• Store all the information about extension in this file.
+• This JSON file included- name of extension,version of extension,manifest version used,
+description of extension, about the action that the extension will take, which itself include
+the icon to be used for extension, and the HTML file used to build extension, and permission that where the extension can be used, in our case all websites.
+• Then build an HTML file which will contain the main content of the extension and
+will call the javascript file for external functionality to be added and also include style.css for better looking front.
+• There  is one javascript file one named popup.js.
+• popup.js include the code to extract URLs from the current page and use it to communicate with clientServer.php which further commmunicate data to finalCode.py.
+• In finalCode.py Machine Learning algorithm is implemented, where Random Forest classification is used along with rule-based query to 
+  convert URLs from text form to the form in which the dataset is used to train the system. Following are the Rules used in Machine Learning:
+	
+			-> Using the IP Address
+			-> Long URL to Hide the Suspicious Part
+			-> URL’s having “@” Symbol
+			-> Redirecting using “//”
+			-> Adding Prefix or Suffix Separated by (-) to the Domain
+			-> Sub Domain and Multi Sub Domains
+			-> Age of Domain
+			-> DNS Record
+			-> Domain Registration Length
+			-> The Existence of “HTTPS” Token in the Domain Part of the URL
+			-> Statistical-Reports Based Feature
+			-> Using URL Shortening Services “TinyURL”
+			-> Website Traffic 
+		
+• Based on above features classifiction will be performed.
+• Then the converted data will be predicted for being Vulnerable or not.
+• This result will be sent back to the clientServer.php which will further echo to popup.js and finally alert box will display the result.
