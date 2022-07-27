@@ -309,7 +309,7 @@ random_forest_classifier = RandomForestClassifier()
 random_forest_classifier.fit(data_train,labels_train)
 
 prediction_label = random_forest_classifier.predict(data_test)
-print( random_forest_classifier.predict(prediction_label))
+# print( random_forest_classifier.predict(prediction_label))
 
 import sys
 u=sys.argv[1]
